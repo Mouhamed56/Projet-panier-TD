@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier d'achat</title>
+
+    <!-- Lien vers ton CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Exemple d'un article -->
+    <div class="cart-item" data-price="199.99">
+        <div class="item-info">
+            <h4 class="item-title">Nom du produit</h4>
+            <div class="item-price">199,99&nbsp;€</div>
+        </div>
+
+        <div class="item-controls">
+            <button class="qty-btn minus">−</button>
+            <span class="quantity">1</span>
+            <button class="qty-btn plus">+</button>
+
+            <button class="like-btn" aria-pressed="false" title="J'aime">❤</button>
+            <button class="remove-btn" title="Supprimer">🗑️</button>
+        </div>
+    </div>
+
+    <!-- Répétez pour chaque article -->
+
+    <!-- Total -->
+    <div class="cart-summary">
+        <div>Total : <span id="total-price">0,00&nbsp;€</span></div>
+    </div>
+
+    <!-- Lien vers ton JavaScript -->
+    <script src="index.js"></script>
+
+</body>
+</html>
