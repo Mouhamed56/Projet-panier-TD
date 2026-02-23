@@ -1,290 +1,59 @@
-/* index.css - style pour le panier d'achat */
-
-/* Reset léger */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root{
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --danger: #ef4444;
-  --like: #e63946;
-  --shadow: 0 6px 18px rgba(20,20,40,0.06);
-  --radius: 12px;
-  --gap: 16px;
-  --max-width: 980px;
-  --font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-/* Page */
-html, body {
-  height: 100%;
-  font-family: var(--font-family);
-  background: linear-gradient(180deg, var(--bg) 0%, #eef2f8 100%);
-  color: #111827;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 36px 20px;
-}
-
-/* Conteneur principal centré */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 28px;
-  align-items: start;
-}
-
-/* Pour les petits écrans : une colonne */
-@media (max-width: 880px) {
-  .container {
-    grid-template-columns: 1fr;
-    padding: 0 8px;
-  }
-}
-
-/* Liste d'items (left column) */
-.cart-list {
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Carte d'un item */
-.cart-item {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-
-.cart-item:hover {
-  transform: translateY(-3px);
-}
-
-/* Infos produit */
-.item-info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 0;
-}
-
-.item-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #0f172a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.item-price {
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
-/* Controls (right side) */
-.item-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Boutons quantité */
-.qty-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid #e6e9ef;
-  background: transparent;
-  display: inline-grid;
-  place-items: center;
-  font-size: 1.05rem;
-  cursor: pointer;
-  transition: background .12s ease, transform .08s ease;
-  user-select: none;
-}
-
-.qty-btn:active {
-  transform: scale(.98);
-}
-
-.qty-btn:hover {
-  background: rgba(37,99,235,0.06);
-}
-
-/* Quantité affichée */
-.quantity {
-  min-width: 28px;
+body {
+  font-family: Arial;
+  background: #f5f5f5;
   text-align: center;
-  font-weight: 600;
-  font-size: 0.98rem;
-  color: #0f172a;
-  padding: 4px 6px;
 }
 
-/* Like button (cœur) */
+.container {
+  width: 600px;
+  margin: auto;
+}
+
+.cart-item {
+  background: white;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-info {
+  text-align: left;
+}
+
+.qty-btn {
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.quantity {
+  font-weight: bold;
+  margin: 5px;
+}
+
 .like-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
-  background: transparent;
+  font-size: 20px;
   cursor: pointer;
-  display: inline-grid;
-  place-items: center;
-  font-size: 1.05rem;
-  color: #9aa3b2;
-  transition: transform .12s ease, color .12s ease, background .12s ease;
+  border: none;
+  background: none;
 }
 
-.like-btn:hover {
-  transform: translateY(-3px);
-  color: #d45a66;
+.liked {
+  color: red;
 }
 
-/* état "aimé" */
-.like-btn.liked {
-  background: rgba(230, 40, 80, 0.08);
-  color: var(--like);
-  box-shadow: 0 4px 10px rgba(230,40,80,0.06);
-}
-
-/* Bouton supprimer */
 .remove-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
   cursor: pointer;
-  background: transparent;
-  display: inline-grid;
-  place-items: center;
-  font-size: 1rem;
-  color: var(--muted);
-  transition: background .12s ease, color .12s ease, transform .08s ease;
+  border: none;
+  background: none;
+  color: red;
 }
 
-.remove-btn:hover {
-  background: rgba(239,68,68,0.06);
-  color: var(--danger);
-  transform: translateY(-3px);
-}
-
-/* Carte récap (right column) */
 .cart-summary {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 28px;
-  align-self: start;
-}
-
-/* Contenu du résumé */
-.summary-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.summary-title {
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* Total final */
-.total-row {
-  margin-top: 8px;
-  padding-top: 10px;
-  border-top: 1px solid #edf2f7;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-#total-price {
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: #0b1220;
-}
-
-/* Buttons d'action dans le résumé */
-.checkout-btn {
-  margin-top: 12px;
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: none;
-  background: var(--accent);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(37,99,235,0.12);
-  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-}
-
-.checkout-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.checkout-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-}
-
-/* Petite aide/accessibilité */
-.qty-btn, .like-btn, .remove-btn, .checkout-btn {
-  outline: none;
-}
-
-.qty-btn:focus, .remove-btn:focus, .like-btn:focus, .checkout-btn:focus {
-  box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
-  border-radius: 10px;
-}
-
-/* Style responsive : réduire paddings sur mobile */
-@media (max-width: 520px) {
-  .cart-item {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .qty-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .remove-btn, .like-btn {
-    width: 36px;
-    height: 36px;
-  }
-
-  #total-price {
-    font-size: 1.05rem;
-  }
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
